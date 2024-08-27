@@ -6,6 +6,6 @@ ansible_password=Admin_1234!
 ansible_command_timeout=180
 gather_fact=no
 [leaf_one]
-sandbox-nxos-1.cisco.com
+10.0.0.40
 [leaf_two]
-131.226.217.151
+10.0.0.50
