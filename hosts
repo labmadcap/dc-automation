@@ -7,5 +7,5 @@ ansible_command_timeout=180
 gather_fact=no
 [leaf_one]
 10.0.0.40
-[leaf_twt]
+[leaf_two]
 10.0.0.50
