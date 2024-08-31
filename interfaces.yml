@@ -12,10 +12,10 @@
               trunk:
               native_vlan: 1
               allowed_vlans: 101,102
-      - name: Ethernet2/1
-        access:
-          vlan: 101
-      - name: Ethernet2/2
-        access:
-          vlan: 102
-    state: merged
+            - name: Ethernet2/1
+              access:
+              vlan: 101
+            - name: Ethernet2/2
+              access:
+              vlan: 102
+          state: merged
