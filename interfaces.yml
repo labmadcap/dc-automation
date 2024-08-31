@@ -6,7 +6,7 @@
 
     tasks:
       - name: Set Ethernet2/1 to switchport mode access
-        cisco.nxos.nxos_interface:
+        cisco.nxos.nxos_interfaces:
           name: Ethernet2/1
           mode: access
 
@@ -15,3 +15,4 @@
           interface: Ethernet2/1
           mode: access
           access_vlan: 101
+
