@@ -5,14 +5,14 @@
     hosts: all
 
     tasks:
-      - name: Set Ethernet2/1 to switchport mode access
-        cisco.nxos.nxos_interfaces:
+      - name: Ensure Eth2/1 is in its default l2 interface state
+        nxos_l2_interface:
           name: Ethernet2/1
-          mode: access
+          state: unconfigured
 
-      - name: Assign VLAN 101 to Ethernet2/1
-        cisco.nxos.nxos_switchport:
-          interface: Ethernet2/1
+      - name: Ensure Eth2/1 is configured for access vlan 101
+        nxos_l2_interface:
+          name: Ethernet2/1
           mode: access
           access_vlan: 101
 
