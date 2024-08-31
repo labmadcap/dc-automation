@@ -5,7 +5,7 @@
     hosts: all
 
     tasks:
-      - name: provision VLAN
+      - name: Configure interfaces as access
         cisco.nxos.nxos_l2_interfaces:
           interface: "{{ item.interface }}"
           mode: access
