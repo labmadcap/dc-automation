@@ -1,25 +1,27 @@
-- name: Configure interfaces as access or trunk
-  hosts: all
-  gather_facts: no
+#
+---
+# Playbook for Configure interfaces as access or trunk on Cisco NX-OS switches
+  - name: Configure interfaces as access or trunk
+    hosts: all
 
-  tasks:
-    - name: Configure interfaces as access
-      cisco.nxos.nxos_interface:
-        interface: "{{ item.interface }}"
-        mode: access
-        access_vlan: "{{ item.vlan_id }}"
-        state: present
-      loop:
+    tasks:
+      - name: provision VLAN
+        cisco.nxos.nxos_interface:
+          interface: "{{ item.interface }}"
+          mode: access
+          access_vlan: "{{ item.vlan_id }}"
+          state: present
+        loop:
         - { interface: 'Ethernet2/1', vlan_id: 101 }
         - { interface: 'Ethernet2/2', vlan_id: 102 }
-      tags: configure_access
+        tags: configure_access
 
-    - name: Configure interfaces as trunk
-      cisco.nxos.nxos_interface:
-        interface: "{{ item.interface }}"
-        mode: trunk
-        trunk_vlans: "{{ item.trunk_vlans }}"
-        state: present
-      loop:
+      - name: Configure interfaces as trunk
+        cisco.nxos.nxos_interface:
+          interface: "{{ item.interface }}"
+          mode: trunk
+          trunk_vlans: "{{ item.trunk_vlans }}"
+          state: present
+        loop:
         - { interface: 'Ethernet2/3', trunk_vlans: '101-102' }
-      tags: configure_trunk
+        tags: configure_trunk
