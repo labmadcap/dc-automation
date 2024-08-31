@@ -5,9 +5,13 @@
     hosts: all
 
     tasks:
-      - name: Configure interfaces as access
-        nxos_switchport:
+      - name: Set Ethernet2/1 to switchport mode access
+        cisco.nxos.nxos_interface:
+          name: Ethernet2/1
+          mode: access
+
+      - name: Assign VLAN 101 to Ethernet2/1
+        cisco.nxos.nxos_switchport:
           interface: Ethernet2/1
           mode: access
           access_vlan: 101
-
