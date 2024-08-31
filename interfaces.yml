@@ -6,7 +6,7 @@
 
     tasks:
       - name: provision VLAN
-        cisco.nxos.nxos_interface:
+        cisco.nxos.nxos_l2_interfaces:
           interface: "{{ item.interface }}"
           mode: access
           access_vlan: "{{ item.vlan_id }}"
@@ -17,7 +17,7 @@
         tags: configure_access
 
       - name: Configure interfaces as trunk
-        cisco.nxos.nxos_interface:
+        cisco.nxos.nxos_l2_interfaces:
           interface: "{{ item.interface }}"
           mode: trunk
           trunk_vlans: "{{ item.trunk_vlans }}"
