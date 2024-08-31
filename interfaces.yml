@@ -5,14 +5,10 @@
     hosts: all
 
     tasks:
-      - name: Ensure Eth2/1 is in its default l2 interface state
-        nxos_l2_interface:
-          name: Ethernet2/1
-          state: unconfigured
-
-      - name: Ensure Eth2/1 is configured for access vlan 101
-        nxos_l2_interface:
-          name: Ethernet2/1
-          mode: access
-          access_vlan: 101
+      - name: Merge provided configuration with device configuration
+        cisco.nxos.nxos_l2_interfaces:
+          config:
+            - name: Ethernet2/1
+              access:
+                vlan: 101
 
