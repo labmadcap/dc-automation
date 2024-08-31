@@ -8,14 +8,11 @@
       - name: Configure interfaces as access
         cisco.nxos.nxos_l2_interfaces:
           config:
-            - name: Ethernet2/3
-              trunk:
-                native_vlan: 1
-                allowed_vlans: 101,102
             - name: Ethernet2/1
               access:
                 vlan: 101
+              mode: access
             - name: Ethernet2/2
               access:
                 vlan: 102
-          state: merged
+              mode: access
