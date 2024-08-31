@@ -1,0 +1,13 @@
+- name: Merge provided configuration with device configuration
+  cisco.nxos.nxos_interfaces:
+    config:
+      - name: Ethernet2/1
+        description: Configured by Ansible Network
+        enabled: true
+      - name: Ethernet2/2
+        description: Configured by Ansible Network
+        enabled: false
+      - name: Ethernet2/3
+        description: Configured by Ansible Network
+        enabled: false
+    state: merged
