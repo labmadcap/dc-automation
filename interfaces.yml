@@ -7,21 +7,15 @@
     tasks:
       - name: Configure interfaces as access
         cisco.nxos.nxos_l2_interfaces:
-          interface: "{{ item.interface }}"
-          mode: access
-          access_vlan: "{{ item.vlan_id }}"
-          state: present
-        loop:
-        - { interface: 'Ethernet2/1', vlan_id: 101 }
-        - { interface: 'Ethernet2/2', vlan_id: 102 }
-        tags: configure_access
-
-      - name: Configure interfaces as trunk
-        cisco.nxos.nxos_l2_interfaces:
-          interface: "{{ item.interface }}"
-          mode: trunk
-          trunk_vlans: "{{ item.trunk_vlans }}"
-          state: present
-        loop:
-        - { interface: 'Ethernet2/3', trunk_vlans: '101-102' }
-        tags: configure_trunk
+          config:
+            - name: Ethernet2/3
+              trunk:
+              native_vlan: 1
+              allowed_vlans: 101,102
+      - name: Ethernet2/1
+        access:
+          vlan: 101
+      - name: Ethernet2/2
+        access:
+          vlan: 102
+    state: merged
