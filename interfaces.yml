@@ -6,13 +6,8 @@
 
     tasks:
       - name: Configure interfaces as access
-        cisco.nxos.nxos_l2_interfaces:
-          config:
-            - name: Ethernet2/1
-              access:
-                vlan: 101
-              mode: access
-            - name: Ethernet2/2
-              access:
-                vlan: 102
-              mode: access
+        nxos_switchport:
+          interface: Ethernet2/1
+          mode: access
+          access_vlan: 101
+
