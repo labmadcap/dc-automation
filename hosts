@@ -2,11 +2,13 @@
 ansible_connection = ansible.netcommon.network_cli
 ansible_network_os = cisco.nxos.nxos
 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
-ansible_user=admin
-ansible_password=Madcap1013
+ansible_user=labmadcap
+ansible_password=e_7QHRfo0-1DZv
 ansible_command_timeout=180
 gather_fact=no
 [leaf_one]
 10.0.0.40
 [leaf_two]
 10.0.0.50
+[sbx-nxos-mgmt.cisco.com]
+131.226.217.151
